@@ -1,0 +1,45 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PYTHONUNBUFFERED=${PYTHONUNBUFFERED}
+      - PORT=${PORT}
+      - DB_HOST=db  # Use o nome do serviço do banco de dados
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+    tty: true
+    ports:
+      - "${PORT}:8000"  # A porta exposta no Dockerfile é 8000
+    networks:
+      - db_network
+    depends_on:
+      db:
+        condition: service_healthy
+    
+
+  db:
+    image: mysql:8.0
+    container_name: banco_mysql
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+    networks:
+      - db_network
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  db_network:
+    driver: bridge
