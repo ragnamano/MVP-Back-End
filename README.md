@@ -17,14 +17,13 @@ Esta API permite o cadastro, consulta, atualização e remoção de endereços u
 - Docker Compose
 - Banco de dados MySQL ou MariaDB
 - Bibliotecas Python listadas no `requirements.txt`
-```
 
 ## Configuração do Ambiente
 
 Clone o repositorio do Github
 Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis de ambiente:
 
-```bash
+```
 # Configurações da API
 PYTHONUNBUFFERED=1
 PORT=8081
@@ -35,6 +34,7 @@ DB_PORT=3306
 DB_USER=root
 DB_PASS=admin
 DB_NAME=mvp
+```
 
 ## Execução
 
