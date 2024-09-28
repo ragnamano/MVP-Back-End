@@ -17,6 +17,7 @@ Esta API permite o cadastro, consulta, atualização e remoção de endereços u
 - Docker Compose
 - Banco de dados MySQL ou MariaDB
 - Bibliotecas Python listadas no `requirements.txt`
+```
 
 ## Configuração do Ambiente
 
