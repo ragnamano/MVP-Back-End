@@ -20,11 +20,25 @@ Esta API permite o cadastro, consulta, atualização e remoção de endereços u
 
 ## Configuração do Ambiente
 
+Clone o repositorio do Github
 Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis de ambiente:
 
 ```bash
-DB_HOST=localhost
+# Configurações da API
+PYTHONUNBUFFERED=1
+PORT=8081
+
+# Configurações do Banco de Dados
+DB_HOST=db
 DB_PORT=3306
-DB_USER=seu_usuario
-DB_PASS=sua_senha
-DB_NAME=nome_do_banco
+DB_USER=root
+DB_PASS=admin
+DB_NAME=mvp
+
+## Execução
+
+No diretorio rais, execute o comando:
+
+```bash
+docker-compose up --build
+
