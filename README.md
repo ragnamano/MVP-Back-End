@@ -46,6 +46,6 @@ docker-compose up --build
 
 Para acessar a documentação no Swagger, execute o comando:
 
-´´´
+```
 http://localhost:8001/openapi
-´´´
+```
